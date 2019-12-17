@@ -6,7 +6,6 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('./config/passport')()
 const cors = require('cors');
-
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/express-jwt-mongo-auth-starter', {

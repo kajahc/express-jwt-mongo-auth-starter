@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 
 /* SIGNUP a user. */
 router.post('/signup', (req, res) => {
+  console.log(req.body)
   if (req.body.email && req.body.password) {
     let newUser = {
       email: req.body.email,
