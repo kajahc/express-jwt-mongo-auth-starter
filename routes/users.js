@@ -1,18 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const jwt = require('jwt-simple');
-const jwtCheck = require('express-jwt');
-const passport = require('../config/passport')
 const config = require('../config/config')
 const User = require('../models/User');
-
-/* GET users listing. */
-router.get('/', (req, res) => {
-  User.find()
-    .then(users => {
-      res.json({ users })
-    })
-});
 
 /* SIGNUP a user. */
 router.post('/signup', (req, res) => {
@@ -37,7 +27,7 @@ router.post('/signup', (req, res) => {
     res.sendStatus(401)
   }
 })
-
+// login user
 router.post('/login', (req, res) => {
   if (req.body.email && req.body.password) {
     User.findOne({ email: req.body.email }).then(user => {
@@ -59,7 +49,7 @@ router.post('/login', (req, res) => {
     res.sendStatus(401)
   }
 })
-
+//returning user info
 router.post('/', (req, res) => {
   console.log(req.headers)
   var decoded = jwt.decode(req.headers.authorization, config.jwtSecret);
@@ -67,19 +57,6 @@ router.post('/', (req, res) => {
   User.findById(decoded.id)
     .then(user => {
       res.json({ user })
-    })
-})
-
-router.get('/:id', jwtCheck({ secret: config.jwtSecret }), (req, res) => {
-  let decoded = jwt.decode(req.headers.authorization.split(' ')[1], config.jwtSecret)
-
-  User.findById(req.params.id)
-    .then(user => {
-      if (user.id === decoded.id) {
-        res.json(user)
-      } else {
-        res.json({ message: "You are not authorized to see that" })
-      }
     })
 })
 
