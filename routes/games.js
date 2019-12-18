@@ -20,7 +20,7 @@ router.get('/:id/final', function(req, res, next) {
   });
 //get game info/score
 router.get('/:id/score', function(req, res, next) {
-    res.send('generate a new game')
+    res.send('score card')
   });
 //update game and question (correct/incorrect)
 router.put('/question/:id', function(req, res, next){

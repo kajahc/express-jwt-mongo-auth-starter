@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 
 const questionSchema = new mongoose.Schema({
   question: { type: String },
+  answer: {type: String},
+  category: {type: String}
   
   
 })
