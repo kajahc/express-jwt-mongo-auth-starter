@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const jwt = require('jwt-simple');
 const config = require('../config/config')
-const User = require('../models/User');
+const User = require('../models/user');
 
 /* SIGNUP a user. */
 router.post('/signup', (req, res) => {
