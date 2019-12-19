@@ -173,6 +173,6 @@ router.delete('/question/:id', function (req, res, next){
     res.send('game deleted')
 })
 // new game function
-
+Answer.find(gameid)
 
 module.exports = router;

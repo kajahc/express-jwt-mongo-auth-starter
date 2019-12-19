@@ -8,8 +8,10 @@ const passport = require('./config/passport')()
 const cors = require('cors');
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/Jeoprady', {
-  useUnifiedTopology: true,
+// mongoose.connect('mongodb://localhost:27017/Jeoprady', {
+  mongoose.connect(process.env.MONGODB_URI, {
+
+useUnifiedTopology: true,
   useNewUrlParser: true,
   useCreateIndex: true
 })
