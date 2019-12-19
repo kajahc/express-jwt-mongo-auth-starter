@@ -8,7 +8,7 @@ const passport = require('./config/passport')()
 const cors = require('cors');
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/express-jwt-mongo-auth-starter', {
+mongoose.connect('mongodb://localhost:27017/Jeoprady', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useCreateIndex: true
@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/games', require('./routes/games'));
+app.use('/api/questions', require('./routes/questions'));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

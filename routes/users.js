@@ -59,5 +59,15 @@ router.post('/', (req, res) => {
       res.json({ user })
     })
 })
+//update 
+router.put('/:id', function(req, res, next){
+  res.send('user updated')
+})
+
+
+//delete a user 
+router.delete('/:id', function(req, res, next) {
+  res.send('user deleted')
+})
 
 module.exports = router;
