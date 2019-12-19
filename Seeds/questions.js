@@ -258,12 +258,132 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, 
     Question: 'In what sport is Wayne Gretzky know for?',
     Answer: 'Hockey',
     Category: 'Sports'
+}, {
+    Question: 'This style of music is done with vocals not instruments',
+    Answer: 'A Cappella',
+    Category: 'Music'
+},{
+    Question: 'A xylophone, a piano, and even the bass drum are all included in this family of instruments',
+    Answer: 'Percussion',
+    Category: 'Music'
+},{
+    Question: "In 1948 at the age of 21 she attended Juilliard she would go on to become one of the world's most gifted and famous opera singers",
+    Answer: 'Leontyne Price',
+    Category: 'Music'
+},{
+    Question: "Not known for just his drumming skills this artist is also known for being a member of the group 'Genesis'",
+    Answer: 'Phil Collins',
+    Category: 'Music'
+},{
+    Question: 'These brothers formed this group before Charlie Wilson went on to a very successful solo career',
+    Answer: 'The Gap Band',
+    Category: 'Music'
+},
+{
+    Question: 'Cosmetics are easy breezy according to this Coty company',
+    Answer: 'Covergirl',
+    Category: 'Brands'
+},{
+    Question: '501s 505s and now tennis shoes are all apart of this company',
+    Answer: 'Levis',
+    Category: 'Brands'
+},{
+    Question: 'These shoes have red bottoms and Cardi B even sang about them',
+    Answer: 'Louboutin',
+    Category: 'Brands'
+},{
+    Question: 'According to J.M. Smuckers The best part of waking up is this in your cup',
+    Answer: 'Folgers',
+    Category: 'Brands'
+},{
+    Question: 'The first Nike LeBron shoe was made in this year',
+    Answer: '2003',
+    Category: 'Brands'
+},{
+    Question: 'This $ symbol is the symbol for cash in javascript the symbol is this',
+    Answer: 'Cache',
+    Category: 'Brands'
+},{
+    Question: 'This $ symbol is the symbol for cash in javascript the symbol is this',
+    Answer: 'Cache',
+    Category: 'Computer Science'
+},{
+    Question: 'A business that needs advise on design, installation, and usage for their business should contact one of these',
+    Answer: 'An IT Consultant',
+    Category: 'Computer Science'
+},{
+    Question: 'This person wrote the first computer Algorithm',
+    Answer: 'Ada Lovelace',
+    Category: 'Computer Science'
+},{
+    Question: 'This allows an object to perform an action',
+    Answer: 'A Method',
+    Category: 'Computer Science'
+},{
+    Question: 'It executes, returns a value, and then resume the program where it was called',
+    Answer:   'A Function',
+    Category: 'Computer Science'
+},{
+    Question: 'This site is recognized as the first social media website',
+    Answer:   'Six Degrees in 1997',
+    Category: 'Social Media'
+},{
+    Question: ' An individual is said to spend an average of this much time on social media per day',
+    Answer:   '142 minutes',
+    Category: 'Social Media'
+},{
+    Question: ' As of 2017 Instagram had 800 million users and 2 million of these',
+    Answer:   'Advertisers',
+    Category: 'Social Media'
+},{
+    Question: ' 2003 Chris DeWolfe and Tom Anderson created this social network',
+    Answer:   ' My space',
+    Category: 'Social Media'
+},{
+    Question: ' September 1, 2001 you could look for jobs or post a singles add on this site',
+    Answer:   ' BlackPlanet',
+    Category: 'Social Media'
+},{
+    Question: ' Joe Namath was the quarterback for this team from 1965 - 1976',
+    Answer:   ' New York Jets',
+    Category: 'Sports'
+},{
+    Question: ' This defensive Lineman for the Chicago Bears was also known as the Refrigerator',
+    Answer:   ' William Perry',
+    Category: 'Sports'
+},{
+    Question: 'He wore the number 7 for the Cincinnati Bengals when he earned this nickname',
+    Answer:   'Boomer',
+    Category: 'Sports'
+},{
+    Question: 'Born in Ohio he became the head coach of the Michigan Wolverines Football team from 1969 - 1989',
+    Answer:   'Glen Bo Schembechler',
+    Category: 'Sports'
+},{
+    Question: 'He won the MVP  award in the 22nd Super Bowl',
+    Answer:   'Doug Williams',
+    Category: 'Sports'
+},{
+    Question: 'The rook in chess is also called this',
+    Answer:   'Castle',
+    Category: 'Games'
+},{
+    Question: "You don't have to hear slot machines to play this game",
+    Answer:   'Casino',
+    Category: 'Games'
+},{
+    Question: 'World Was II was the first installment of this video game series',
+    Answer:   'Call of Duty',
+    Category: 'Games'
+},{
+    Question: 'Xbox 360 unveiled this attachment in 2009',
+    Answer:   'The Kynect',
+    Category: 'Games'
+},{
+    Question: 'When playing poker five cards in sequential order of the same suit is called this',
+    Answer:   'A Straight Flush',
+    Category: 'Games'
 }
-
-
-
-
-
 ];
 
 Question.collection.insert(Questions, function (err, docs) {
