@@ -10,19 +10,19 @@ router.get('/new/:id', function(req, res, next) {
 //loop over 6 categories for questions (5 questions from 6 categories)
 // final question 
 // create a new game with all questions, including the final question
-   let all_questions = []
    const gameid = uuidv1()
     Question.find({Category:"Music"})
     .limit(5)
     .exec((err, questions)=> {
-        all_questions.push(questions)
-        all_questions.map((question, index)=>{
+        console.log(questions)
+        questions.map((question, index)=>{
+            console.log(question)
             AnswerQ = new Answer ({
-                question: question.id,
+                question: question._id,
                 user: req.params.id,
                 point_value: (((index + 1)%5) * 200),
-                game: gameid
-
+                game: gameid,
+                final_question: false
             })
             AnswerQ.save(function (err, answer) {
                 if (err) return console.error(err);
@@ -34,13 +34,14 @@ router.get('/new/:id', function(req, res, next) {
     Question.find({Category:"Social Media"})
     .limit(5)
     .exec((err, questions)=> {
-        all_questions.push(questions)
-        all_questions.map((question, index)=>{
+        questions.map((question, index)=>{
+            console.log(question._id)
             AnswerQ = new Answer ({
-                question: question.id,
+                question: question._id,
                 user: req.params.id,
                 point_value: (((index + 1)%5) * 200),
-                game: gameid
+                game: gameid,
+                final_question: false
 
             })
             AnswerQ.save(function (err, answer) {
@@ -53,13 +54,14 @@ router.get('/new/:id', function(req, res, next) {
     Question.find({Category:"Sports"})
     .limit(5)
     .exec((err, questions)=> {
-        all_questions.push(questions)
-        all_questions.map((question, index)=>{
+        questions.map((question, index)=>{
+            console.log(question._id)
             AnswerQ = new Answer ({
-                question: question.id,
+                question: question._id,
                 user: req.params.id,
                 point_value: (((index + 1)%5) * 200),
-                game: gameid
+                game: gameid,
+                final_question: false
 
             })
             AnswerQ.save(function (err, answer) {
@@ -72,13 +74,14 @@ router.get('/new/:id', function(req, res, next) {
     Question.find({Category:"Games"})
     .limit(5)
     .exec((err, questions)=> {
-        all_questions.push(questions)
-        all_questions.map((question, index)=>{
+        questions.map((question, index)=>{
+            console.log(question._id)
             AnswerQ = new Answer ({
-                question: question.id,
+                question: question._id,
                 user: req.params.id,
                 point_value: (((index + 1)%5) * 200),
-                game: gameid
+                game: gameid,
+                final_question: false
 
             })
             AnswerQ.save(function (err, answer) {
@@ -91,13 +94,14 @@ router.get('/new/:id', function(req, res, next) {
     Question.find({Category:"Computer Science"})
     .limit(5)
     .exec((err, questions)=> {
-        all_questions.push(questions)
-        all_questions.map((question, index)=>{
+        questions.map((question, index)=>{
+            console.log(question._id)
             AnswerQ = new Answer ({
-                question: question.id,
+                question: question._id,
                 user: req.params.id,
                 point_value: (((index + 1)%5) * 200),
-                game: gameid
+                game: gameid,
+                final_question: false
 
             })
             AnswerQ.save(function (err, answer) {
@@ -110,13 +114,14 @@ router.get('/new/:id', function(req, res, next) {
     Question.find({Category:"Brands"})
     .limit(5)
     .exec((err, questions)=> {
-        all_questions.push(questions)
-        all_questions.map((question, index)=>{
+        questions.map((question, index)=>{
+            console.log(question._id)
             AnswerQ = new Answer ({
-                question: question.id,
+                question: question._id,
                 user: req.params.id,
                 point_value: (((index + 1)%5) * 200),
-                game: gameid
+                game: gameid,
+                final_question: false
 
             })
             AnswerQ.save(function (err, answer) {
@@ -129,13 +134,14 @@ router.get('/new/:id', function(req, res, next) {
     Question.find({Category:"Final Question"})
     .limit(1)
     .exec((err, questions)=> {
-        all_questions.push(questions)
-        all_questions.map((question, index)=>{
+        questions.map((question, index)=>{
+            console.log(question._id)
             AnswerQ = new Answer ({
-                question: question.id,
+                question: question._id,
                 user: req.params.id,
                 point_value: (((index + 1)%5) * 200),
-                game: gameid
+                game: gameid,
+                final_question: true
 
             })
             AnswerQ.save(function (err, answer) {
@@ -150,29 +156,60 @@ router.get('/new/:id', function(req, res, next) {
   
 //get by id - continue play
 router.get('/:id/game', function(req, res, next) {
-    res.send('get by id')
+    Answer.find({game: req.params.id})
+    .populate('question')
+    .exec((err, questions)=> {
+        if(err) console.log(err)
+        console.log(questions)
+        res.json(questions)
+    })
   });
 //history of games 
-router.get('/history', function(req, res, next) {
-    res.send('history of games')
+router.get('/:id/history', function(req, res, next) {
+    Answer.find({user: req.params.id})
+    .select('gameid')
+    .exec((err, gameid)=> {
+        if(err) console.log(err)
+        console.log(gameid)
+        res.json(gameid)
+    })
   });
 //final question
 router.get('/:id/final', function(req, res, next) {
-    res.send('final question')
+    Answer.find({game: req.params.id, final_question: true})
+    .populate('question')
+    .exec((err, questions)=> {
+        if(err) console.log(err)
+        console.log(questions)
+        res.json(questions)
+    })
   });
 //get game info/score
 router.get('/:id/score', function(req, res, next) {
-    res.send('score card')
+    Answer.find({game: req.params.id, answer: true})
+    .populate('question')
+    .exec((err, questions)=> {
+        const total = Object.values(questions).reduce((t, {point_value}) => t + point_value, 0)
+        if(err) console.log(err)
+        console.log(total)
+        res.json(total)
+    })
   });
 //update game and question (correct/incorrect)
-router.put('/question/:id', function(req, res, next){
-    res.send('question by id')
-})
+router.put('/:answerId/question', function(req, res, next){
+    Answer.findByIdAndUpdate(answerId, req.body, {new: true}, (err, answer) => {
+        res.send(answer)
+    }
+)
 //delete a game 
-router.delete('/question/:id', function (req, res, next){
-    res.send('game deleted')
+router.delete('/:id/delete', function (req, res, next){
+    Answer.find({game: req.params.id})
+    .remove()
+    .exec((err, answers)=> {
+       // delete answers
+       console.log(answers)
+        res.send(req.params.id)
+    })
 })
-// new game function
-Answer.find(gameid)
 
-module.exports = router;
+module.exports = router

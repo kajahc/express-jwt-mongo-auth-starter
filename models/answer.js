@@ -17,5 +17,5 @@ const answerSchema = new Schema({
   game: {type: String}
 })
 
-const answer = mongoose.model('answer', answerSchema)
+const answer = mongoose.model('Answer', answerSchema)
 module.exports = answer
