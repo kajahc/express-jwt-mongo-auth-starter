@@ -199,8 +199,7 @@ router.get('/:id/score', function(req, res, next) {
 router.put('/:answerId/question', function(req, res, next){
     Answer.findByIdAndUpdate(answerId, req.body, {new: true}, (err, answer) => {
         res.send(answer)
-    }
-)
+    })
 //delete a game 
 router.delete('/:id/delete', function (req, res, next){
     Answer.find({game: req.params.id})
