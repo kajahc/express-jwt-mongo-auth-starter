@@ -1,11 +1,3 @@
-![](https://imgur.com/E6PBujg)
-![](https://imgur.com/coiiV2M)
-![](https://imgur.com/rCejBkp)
-![](https://imgur.com/6Q1CFU5)
-![](https://imgur.com/pAM9Hhc)
-![](https://imgur.com/SNEZdDq)
-![](https://imgur.com/1iZjtKu)
-![](https://imgur.com/k3iFXBE)
 # Instructions:
 The objective of Jeopardy is to accumulate the most points from a 6x6 grid of questions and categories. Our game is made for a single player. However, it is expected the next User will play and they two players will compete in this manner. The player who accumulates the most points after the final question is the winner. 
 # User stories:
@@ -14,6 +6,11 @@ As a user I want to play Jeopardy so that I can pass time.
 As a user I want to be able to wager against friends so that I can see who is smarter.
 As a user I want to answer questions so that I can measure my intelligence.
 As a user I want to play Jeopardy so that I can walk down memory lane.
+As a trivia buff it would be nice to have a trivia game that I can play with my grangkids.
+I would like for someone to create a game of trivia that escalates my thirst for the champioship.
+As a user there should be a game that gathers the family for fun.
+As the mother of users I would like a game that I don't have to moonitor who's really playing with my kids.
+If I was a user I would want to play a game that I could play alone so I dont get embarressed
 # Preview
 This game is modeled after the tv show. There are six categories which contain five questions each valuing from 200 points to 1000 points.
 # Technology used:
